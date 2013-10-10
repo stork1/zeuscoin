@@ -1,0 +1,9 @@
+Building Zeuscoin
+
+See doc/readme-qt.rst for instructions on building Zeuscoin-QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Zeuscoin.
+
+See doc/build-*.txt for instructions on building Zeuscoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Zeuscoin.
