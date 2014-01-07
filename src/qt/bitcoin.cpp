@@ -1,6 +1,9 @@
 /*
  * W.J. van der Laan 2011-2012
  */
+
+#include <QApplication>
+
 #include "bitcoingui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
@@ -12,13 +15,16 @@
 #include "ui_interface.h"
 #include "qtipcserver.h"
 
-#include <QApplication>
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QLocale>
 #include <QTranslator>
 #include <QSplashScreen>
 #include <QLibraryInfo>
+
+#ifdef Q_OS_MAC
+#include "macdockiconhandler.h"
+#endif
 
 #include <boost/interprocess/ipc/message_queue.hpp>
 #include <boost/algorithm/string/predicate.hpp>
@@ -146,9 +152,11 @@ int main(int argc, char *argv[])
     }
 #endif
 
+#if QT_VERSION < 0x050000
     // Internal string conversion is all UTF-8
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
+#endif
 
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
